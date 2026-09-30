@@ -1,0 +1,197 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+
+        .form-table {
+            border: none;
+        }
+
+        .form-table td {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Patient Registration Form</h2>
+
+<form id="patientForm">
+
+    <table class="form-table">
+
+        <tr>
+            <td><label>Full Name:</label></td>
+            <td><input type="text" id="name" required></td>
+
+            <td><label>Patient ID:</label></td>
+            <td><input type="text" id="patientId" required></td>
+        </tr>
+
+        <tr>
+            <td><label>Date of Birth:</label></td>
+            <td><input type="date" id="dob" required></td>
+
+            <td><label>Age:</label></td>
+            <td><input type="number" id="age" required></td>
+        </tr>
+
+        <tr>
+            <td><label>Gender:</label></td>
+            <td>
+                <input type="radio" name="gender" value="Male" required> Male
+                <input type="radio" name="gender" value="Female"> Female
+            </td>
+
+            <td><label>ID Number:</label></td>
+            <td><input type="text" id="idNumber" required></td>
+        </tr>
+
+        <tr>
+            <td><label>Phone Number:</label></td>
+            <td><input type="tel" id="phone" required></td>
+
+            <td><label>Marital Status:</label></td>
+            <td>
+                <select id="maritalStatus" required>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label>Weight (kg):</label></td>
+            <td><input type="number" id="weight"></td>
+
+            <td><label>Health Status:</label></td>
+            <td><input type="text" id="healthStatus"></td>
+        </tr>
+
+        <tr>
+            <td><label>Next of Kin:</label></td>
+            <td><input type="text" id="nextOfKin" required></td>
+
+            <td><label>Address:</label></td>
+            <td><input type="text" id="address"></td>
+        </tr>
+
+        <tr>
+            <td colspan="4" style="text-align: center;">
+                <br>
+                <button type="submit">Submit Registration</button>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+<br>
+<hr>
+<br>
+
+<h2>Registered Patients List</h2>
+
+<table id="recordsTable" style="width: 100%;">
+
+    <thead>
+        <tr>
+            <th>Patient ID</th>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>ID No</th>
+            <th>Phone</th>
+            <th>Marital Status</th>
+            <th>Weight</th>
+            <th>Health Status</th>
+            <th>Next of Kin</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+
+    <tbody id="tableBody">
+    </tbody>
+
+</table>
+
+
+<script>
+
+document.getElementById('patientForm').addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    // Get values from the form
+    var name = document.getElementById('name').value;
+    var patientId = document.getElementById('patientId').value;
+    var dob = document.getElementById('dob').value;
+    var age = document.getElementById('age').value;
+
+    var gender =
+        document.querySelector('input[name="gender"]:checked').value;
+
+    var idNumber = document.getElementById('idNumber').value;
+    var phone = document.getElementById('phone').value;
+    var maritalStatus =
+        document.getElementById('maritalStatus').value;
+
+    var weight = document.getElementById('weight').value;
+    var healthStatus =
+        document.getElementById('healthStatus').value;
+
+    var nextOfKin =
+        document.getElementById('nextOfKin').value;
+
+    var address =
+        document.getElementById('address').value;
+
+
+    // Create a new row
+    var tableBody = document.getElementById('tableBody');
+
+    var newRow = tableBody.insertRow();
+
+
+    // Add information to the row
+    newRow.insertCell(0).innerText = patientId;
+    newRow.insertCell(1).innerText = name;
+    newRow.insertCell(2).innerText = dob;
+    newRow.insertCell(3).innerText = age;
+    newRow.insertCell(4).innerText = gender;
+    newRow.insertCell(5).innerText = idNumber;
+    newRow.insertCell(6).innerText = phone;
+    newRow.insertCell(7).innerText = maritalStatus;
+    newRow.insertCell(8).innerText = weight;
+    newRow.insertCell(9).innerText = healthStatus;
+    newRow.insertCell(10).innerText = nextOfKin;
+    newRow.insertCell(11).innerText = address;
+
+
+    // Clear the form
+    document.getElementById('patientForm').reset();
+
+});
+
+</script>
+
+</body>
+</html>
+```
